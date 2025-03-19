@@ -84,8 +84,5 @@ python src/main.py
 ## 🔜 **Next Steps**
 ✅ **Integration with Live Video Feeds** → The next goal is to enable real-time offside detection during match broadcasts.
 
----
 
-📌 **Author:** Your Name  
-📌 **Contact:** [your-email@email.com](mailto:your-email@email.com)  
 
