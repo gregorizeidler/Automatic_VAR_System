@@ -7,41 +7,41 @@ from adjust_perspective import adjust_perspective
 from refine_field_lines import refine_field_lines
 from draw_var_line import draw_var_line
 
-# Carregar vídeo
+# Load video
 video_path = "data/match_video.mp4"
 cap = cv2.VideoCapture(video_path)
 
-# Obter informações do vídeo
+# Get video properties
 fps = int(cap.get(cv2.CAP_PROP_FPS))
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-# Criar vídeo de saída
+# Create output video writer
 fourcc = cv2.VideoWriter_fourcc(*"mp4v")
 out = cv2.VideoWriter("output_video.mp4", fourcc, fps, (width, height))
 
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
-        break  # Fim do vídeo
+        break  # End of video
 
-    # Refinar a detecção das linhas do campo
+    # Refine field line detection
     field_lines = refine_field_lines(frame)
 
-    # Ajustar a perspectiva dinamicamente
+    # Adjust perspective dynamically
     frame = adjust_perspective(frame, field_lines)
 
-    # Detectar jogadores
+    # Detect players
     player_positions = detect_players(frame)
 
-    # Aplicar tracking com DeepSORT
+    # Apply tracking with DeepSORT
     tracked_players = track_players(player_positions, frame)
 
-    # Ajustar e desenhar a linha do VAR
+    # Adjust and draw the VAR line
     draw_var_line(frame, width, tracked_players, field_lines)
 
-    # Exibir frame processado
-    cv2.imshow("VAR Automático", frame)
+    # Show processed frame
+    cv2.imshow("Automatic VAR System", frame)
     out.write(frame)
 
     if cv2.waitKey(1) & 0xFF == ord("q"):
