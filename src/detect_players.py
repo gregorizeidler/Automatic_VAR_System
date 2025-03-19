@@ -1,14 +1,20 @@
+import cv2
+import numpy as np
+import torch
 from ultralytics import YOLO
 
-# Load YOLOv8 model
-model = YOLO("models/yolov8.pt")
+# Carrega o modelo YOLO pré-treinado
+model = YOLO("yolov8n.pt")  # Usará o modelo da raiz ou podemos alterá-lo para "models/yolov8.pt"
 
 def detect_players(frame):
-    """ Detects players in the frame and returns bounding boxes. """
+    """Detecta jogadores no frame usando YOLO."""
     results = model(frame)
-    boxes = []
+    players = []
+    
     for result in results:
         for box in result.boxes:
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-            boxes.append((x1, y1, x2, y2))
-    return boxes
+            if box.cls == 0:  # Filtra apenas pessoas (classe 0 do COCO)
+                x1, y1, x2, y2 = map(int, box.xyxy[0])
+                players.append((x1, y1, x2, y2))
+    
+    return players
