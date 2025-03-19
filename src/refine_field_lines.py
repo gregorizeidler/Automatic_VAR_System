@@ -1,17 +1,8 @@
-import cv2
 import numpy as np
 
-def refine_field_lines(frame):
-    """Enhances field line detection by filtering noise and ensuring precision."""
-    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    lower_white = np.array([0, 0, 200])
-    upper_white = np.array([180, 30, 255])
-    mask = cv2.inRange(hsv, lower_white, upper_white)
-
-    kernel = np.ones((5, 5), np.uint8)
-    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-
-    edges = cv2.Canny(mask, 50, 150, apertureSize=3)
-    lines = cv2.HoughLinesP(edges, 1, np.pi/180, 50, minLineLength=100, maxLineGap=50)
-
-    return lines
+def refine_field_lines(field_lines):
+    """
+    Filtra e ajusta as linhas do campo para melhorar a precisão.
+    """
+    field_lines = sorted(field_lines, key=lambda line: line[1])  # Ordena pelas coordenadas Y
+    return field_lines[:4]  # Mantém apenas as 4 primeiras linhas principais
