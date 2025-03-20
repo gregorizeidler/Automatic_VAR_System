@@ -36,11 +36,10 @@ This project integrates multiple computer vision modules to analyze soccer video
 
 ---
 
+## 🎥 Demonstration Video
 
-🎥 Demonstration Video
-Watch the Automatic VAR System in action:
-📹 Video Demonstration
-
+Watch the Automatic VAR System in action:  
+📹 **[Video Demonstration](https://drive.google.com/file/d/1Dfb8AzE3z55t6H2bdsgZWVSqrNLApAHX/view?usp=sharing)**
 
 ---
 
@@ -135,4 +134,3 @@ The processed video will display detected players, field lines, and the computed
 This updated README reflects the current state of the project and its modules. Feel free to further adjust it to suit additional project changes or specific deployment requirements.
 
 Happy coding!
-
