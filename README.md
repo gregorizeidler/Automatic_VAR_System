@@ -36,6 +36,14 @@ This project integrates multiple computer vision modules to analyze soccer video
 
 ---
 
+
+🎥 Demonstration Video
+Watch the Automatic VAR System in action:
+📹 Video Demonstration
+
+
+---
+
 ## 📂 Project Structure
 
 ```
