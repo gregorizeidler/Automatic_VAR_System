@@ -109,3 +109,4 @@ def draw_enhanced_var_line(frame, x1, y1, x2, y2):
     # Adicionar texto "VAR Line"
     font = cv2.FONT_HERSHEY_SIMPLEX
     cv2.putText(frame, "VAR Line", (width//2-50, y1-15), font, 0.7, (0, 0, 255), 2, cv2.LINE_AA)
+
