@@ -106,3 +106,6 @@ def detect_field_lines(frame):
     # Atualizar as linhas anteriores para o próximo frame
     _previous_lines = field_lines
     return field_lines 
+
+
+
