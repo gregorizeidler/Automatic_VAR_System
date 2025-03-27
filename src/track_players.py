@@ -82,3 +82,4 @@ class TrackPlayers:
                 bbox = track.to_tlbr()  # [x1, y1, x2, y2]
                 boxes.append(bbox)
         return boxes
+ 
