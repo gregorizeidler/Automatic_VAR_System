@@ -13,25 +13,33 @@ This project integrates multiple computer vision modules to analyze soccer video
 ## 🚀 Features
 
 - **Refined Field Line Detection**  
-  - Uses Canny edge detection, Hough transform, and additional stabilization techniques (see `detect_lines.py` and `detect_field_lines.txt`) to accurately detect the field boundaries.
+  - Uses Canny edge detection, Hough transform, and additional stabilization techniques (see `detect_lines.py` and `detect_field_lines.txt`) to accurately detect the field boundaries.  
   - Further refines results with a filtering module (`refine_field_lines.py`).
 
 - **Adaptive Homography & Perspective Correction**  
   - Corrects the camera perspective based on detected field lines using a caching mechanism to improve performance ([`adjust_perspective.py`](#)).
 
 - **Player Detection and Tracking**  
-  - **Detection:** Uses a YOLO (Ultralytics) model to detect players in each frame ([`detect_players.py`](#)).
+  - **Detection:** Uses a YOLO (Ultralytics) model to detect players in each frame ([`detect_players.py`](#)).  
   - **Tracking:** Leverages DeepSORT to track players across frames, ensuring consistent identification throughout the match ([`track_players.py`](#)).
 
 - **Intelligent VAR Line Adjustment**  
-  - Computes the offside line by drawing a line parallel to the field line, anchored to the defender’s position. The system adjusts the line’s vertical position based on the most advanced player and applies stabilization techniques to avoid jitter ([`draw_var_line.py`](#)).
+  - Computes the offside line by drawing a line parallel to the field line, anchored to the defender’s position.  
+  - The system adjusts the line’s vertical position based on the most advanced player and applies stabilization techniques to avoid jitter ([`draw_var_line.py`](#)).
 
 - **Interactive Analysis Mode**  
-  - Allows users to pause the video and select key points (field line, defender, attacker) to manually adjust the analysis.
+  - Allows users to pause the video and select key points (field line, defender, attacker) to manually adjust the analysis.  
   - Provides on-screen instructions and feedback for a streamlined analysis experience.
 
+- **Extended Manual Tools**  
+  - Supports defender/attacker selection, perspective calibration, export of still images and full analysis videos.  
+  - Full set of keyboard shortcuts for ease of use (see below).
+
+- **Advanced Configuration Options**  
+  - Tune detection thresholds, customize annotation colors, and tweak zoom/perspective for enhanced control.
+
 - **Video Processing and Output**  
-  - Processes entire matches or selected clips.
+  - Processes entire matches or selected clips.  
   - Saves processed output (video or analysis snapshot) with the VAR line and player annotations.
 
 ---
@@ -66,7 +74,7 @@ Automatic-VAR-System/
 
 ---
 
-## 🛠 Installation
+## 💠 Installation
 
 1. **Clone the repository:**
    ```bash
@@ -104,33 +112,69 @@ Execute the main script to start processing the video:
 python src/main.py
 ```
 
-### Interactive Controls
+---
 
-- **Spacebar:** Pause/Resume video playback.
-- **S:** Enter analysis mode (captures the current frame for manual point selection).
-- **A/D:** Switch attacking direction (left/right).
-- **R:** Reset analysis mode.
-- **Q:** Quit the application (if in analysis mode and a VAR line has been calculated, an image snapshot is saved as `offside_analysis.jpg`).
-- **. / , (when paused):** Advance or rewind one frame.
+## 🕹 Interactive Controls (Full List)
 
-The processed video will display detected players, field lines, and the computed VAR line. In analysis mode, manual adjustments and annotations will be visible.
+- **Spacebar:** Pause/Resume video playback  
+- **S:** Enter analysis mode (captures the current frame for manual point selection)  
+- **A/D:** Switch attacking direction (left/right)  
+- **R:** Reset analysis mode  
+- **Q:** Quit the application (if in analysis mode and a VAR line has been calculated, an image snapshot is saved as `offside_analysis.jpg`)  
+- **. / ,** (when paused): Advance or rewind one frame  
+- **C:** Enter calibration mode  
+- **F:** Select attacker (in analysis mode)  
+- **D:** Select last defender (in analysis mode)  
+- **V:** Export analysis video  
+- **I:** Show/hide on-screen instructions  
 
 ---
 
-## 🔜 Next Steps
+## 🔧 Advanced Settings
 
-- **Live Video Integration:** Enable real-time offside detection during live broadcasts.
-- **Enhanced Stabilization:** Further improve stability and accuracy for varying match conditions.
-- **Extended Analytics:** Incorporate additional statistical insights from player positions and movements.
+You can customize key parts of the system by editing parameters in the source code:
+
+- **CONFIDENCE_THRESHOLD** – Adjust YOLO detection confidence  
+- **Annotation Colors** – Customize lines, labels, and overlays  
+- **Zoom and Perspective Options** – Fine-tune calibration and visual output  
 
 ---
 
-## License
+## 🧠 Technologies Used
+
+- **Python** – Core language  
+- **OpenCV** – Image and video processing  
+- **NumPy** – Numerical computing  
+- **Ultralytics YOLOv8** – Object detection  
+- **DeepSORT** – Multi-object tracking  
+
+---
+
+## 🧰 Next Steps
+
+- **Live Video Integration:** Enable real-time offside detection during live broadcasts  
+- **Enhanced Stabilization:** Further improve stability and accuracy for varying match conditions  
+- **Extended Analytics:** Incorporate additional statistical insights from player positions and movements  
+
+---
+
+## 🤝 Contributions
+
+Contributions are welcome! To contribute:
+
+1. Fork the project  
+2. Create your feature branch (`git checkout -b feature/your-feature`)  
+3. Commit your changes (`git commit -m 'Add new feature'`)  
+4. Push to the branch (`git push origin feature/your-feature`)  
+5. Open a Pull Request
+
+---
+
+## 📄 License
 
 *Specify your project license here (e.g., MIT License).*
 
 ---
 
-This updated README reflects the current state of the project and its modules. Feel free to further adjust it to suit additional project changes or specific deployment requirements.
+This updated README combines the technical depth and structure of the original English version with key interactive and workflow insights from the Portuguese guide. Let me know if you'd like to create a second version entirely in Portuguese as well!
 
-Happy coding!
