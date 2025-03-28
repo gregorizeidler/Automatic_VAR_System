@@ -1,3 +1,5 @@
+⚽📹🚩
+
 # Automatic VAR System
 
 The Automatic VAR System automatically generates the VAR (Video Assistant Referee) line in soccer videos, ensuring accurate offside analysis through a series of advanced computer vision techniques.
@@ -7,6 +9,17 @@ The Automatic VAR System automatically generates the VAR (Video Assistant Refere
 ## Overview
 
 This project integrates multiple computer vision modules to analyze soccer videos. It detects field lines, corrects perspective, detects and tracks players, and intelligently calculates and draws the offside (VAR) line. An interactive analysis mode allows for manual selection and adjustment to further improve accuracy.
+
+---
+
+## ✅ Key Features (Quick View)
+
+✅ **Refined Field Line Detection** → Filters noise and detects only relevant lines.  
+✅ **Adaptive Homography** → Dynamically adjusts perspective based on detected field lines.  
+✅ **Player Tracking with DeepSORT** → Keeps players identified throughout the match.  
+✅ **Intelligent VAR Line Adjustment** → Compensates for field inclinations for greater accuracy.  
+✅ **Video Processing for Matches** → Automatically saves the processed video with the VAR line drawn.  
+✅ **Support for Full Matches or Clips** → Can be used for entire matches or specific highlights.
 
 ---
 
